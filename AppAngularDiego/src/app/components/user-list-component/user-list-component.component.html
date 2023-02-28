@@ -1,1 +1,8 @@
-<p>user-list-component works!</p>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let dato of datos" >
+
+        <p> {{ dato.first_name }}  </p>
+        <p> {{ dato.last_name }}  </p>
+
+    </li>
+</ul>

@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './user.model';
+/* import { User } from './user.model'; */
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 
-  private apiURL = 'https://peticiones.online/users';
+  constructor(private http: HttpClient) { 
+  }
+  
 
-  constructor(private http: HttpClient) { }
+  getItems() {
+    return this.http.get('https://peticiones.online/api/users');
+  }
 
-  getUsers(): Observable<User[]> {
+  
+  /* getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiURL);
   }
 
@@ -32,5 +37,5 @@ export class UserServiceService {
   deleteUser(id: number): Observable<User> {
     const url = `${this.apiURL}/${id}`;
     return this.http.delete<User>(url);
-  }
+  } */
 }
