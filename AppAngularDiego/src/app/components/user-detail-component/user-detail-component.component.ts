@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserInterface } from 'src/app/interfaces/user-interface';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-user-detail-component',
@@ -7,5 +9,16 @@ import { Component } from '@angular/core';
 })
 export class UserDetailComponentComponent {
 
+  datos: UserInterface[] = [];
+
+  constructor (private servicio: UserServiceService) {}
+
+  ngOnInit(): void{
+
+    this.servicio.getItems().subscribe((data) => {
+      this.datos = data;
+    });
+
+  }
 
 }

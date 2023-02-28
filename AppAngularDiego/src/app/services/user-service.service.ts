@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UserInterface } from '../interfaces/user-interface';
 /* import { User } from './user.model'; */
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
+  private linkApi: string = 'https://jsonplaceholder.typicode.com/posts';
 
   constructor(private http: HttpClient) { 
   }
   
 
-  getItems() {
-    return this.http.get('https://peticiones.online/api/users');
+  getItems(): Observable<UserInterface[]>{
+    return this.http.get<UserInterface[]>(this.linkApi);
   }
 
   

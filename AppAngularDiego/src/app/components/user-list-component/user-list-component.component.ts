@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserInterface } from 'src/app/interfaces/user-interface';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -8,13 +9,15 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 })
 export class UserListComponentComponent{
 
-  datos$: Observable<any[]>;
+  datos: UserInterface[] = [];
 
   constructor (private servicio: UserServiceService) {}
 
-  ngOnInit() {
+  ngOnInit(): void{
 
-    this.datos$ = this.servicio.getItems();
+    this.servicio.getItems().subscribe((data) => {
+      this.datos = data;
+    });
 
   }
 
