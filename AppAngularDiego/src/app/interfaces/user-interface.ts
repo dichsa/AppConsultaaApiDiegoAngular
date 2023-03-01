@@ -1,8 +1,7 @@
 export interface UserInterface {
     id?: number;
-    results: string;
-    body: string;
-    last_name: number;
-    email: string;
-    curso: string;
+    first_name: string;
+    last_name: string;
+    image: string;
+    email?: string;
 }

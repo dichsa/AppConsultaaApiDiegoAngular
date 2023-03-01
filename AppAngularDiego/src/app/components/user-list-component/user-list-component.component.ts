@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserInterface } from 'src/app/interfaces/user-interface';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
@@ -7,18 +7,16 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   templateUrl: './user-list-component.component.html',
   styleUrls: ['./user-list-component.component.css']
 })
-export class UserListComponentComponent{
+export class UserListComponentComponent implements OnInit{
 
-  datos: UserInterface[] = [];
+  public users: UserInterface[] = [];
 
   constructor (private servicio: UserServiceService) {}
 
-  ngOnInit(): void{
-
-    this.servicio.getItems().subscribe((data) => {
-      this.datos = data;
-    });
-
+  async ngOnInit(): Promise<any>{
+    let response = await this.servicio.getItems();
+    this.users = response.results;
+    console.log(this.users);
   }
 
 }

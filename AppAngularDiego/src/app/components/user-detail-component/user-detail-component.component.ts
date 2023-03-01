@@ -9,16 +9,17 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 })
 export class UserDetailComponentComponent {
 
-  datos: UserInterface[] = [];
+/*   datos: UserInterface[] = [];
 
   constructor (private servicio: UserServiceService) {}
 
   ngOnInit(): void{
 
     this.servicio.getItems().subscribe((data) => {
+      console.log(data);
       this.datos = data;
     });
 
-  }
+  } */
 
 }
