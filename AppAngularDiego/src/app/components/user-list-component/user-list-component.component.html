@@ -1,16 +1,15 @@
-<div class="m-4 vh-80 row justify-content-center align-items-center" style="margin: 20px; text-align: center;">
-    <div class="card shadow" style="width: 15rem; margin: 35px" *ngFor="let usuario of users ">
-        <img src={{usuario.image}} class="rounded-circle" width="230" height="230" style="padding: 15px;">
+<div class="m-5 row justify-content-center align-items-center" style="margin: 20px; text-align: center;">
+    <div class="card shadow" style="width: 15rem; margin: 35px" *ngFor="let usuario of users">
+        <img [src]="usuario.image" class="rounded-circle" width="230" height="230" style="padding: 15px;">
         <div class="card-body">
-            <h5 style="font-size: 12px; text-align: center;">{{usuario.first_name}}</h5>
-            <h5 style="font-size: 12px; text-align: center;">{{usuario.last_name}}</h5>
+            <h3 style="font-size: 15px; text-align: center;">{{usuario.first_name}} {{usuario.last_name}}</h3>
         </div>
         <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
-                    <p>Ver detalle</p>
+                    <button [routerLink]="['/users/', usuario.id]">Ver detalle</button>
                 </div>
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">

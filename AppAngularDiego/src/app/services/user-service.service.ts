@@ -7,24 +7,22 @@ import { UserInterface } from '../interfaces/user-interface';
   providedIn: 'root'
 })
 export class UserServiceService {
-  linkApi: string = 'https://peticiones.online/api/users';
+  linkApi: string = 'https://peticiones.online/api/users/';
 
   constructor(private httpClient: HttpClient) { 
   }
   
-
   getItems(pPage: number = 1): Promise<any>{
     return lastValueFrom(this.httpClient.get<any>(`${this.linkApi}?page=${pPage}`));
+  }
+
+  getById(pId: number): Promise<any>{
+    return lastValueFrom(this.httpClient.get<any>(`${this.linkApi}${pId}`));
   }
 
   
   /* getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiURL);
-  }
-
-  getUser(id: number): Observable<User> {
-    const url = `${this.apiURL}/${id}`;
-    return this.http.get<User>(url);
   }
 
   createUser(user: User): Observable<User> {

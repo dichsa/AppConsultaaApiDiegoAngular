@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserInterface } from 'src/app/interfaces/user-interface';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
@@ -7,19 +8,20 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   templateUrl: './user-detail-component.component.html',
   styleUrls: ['./user-detail-component.component.css']
 })
-export class UserDetailComponentComponent {
+export class UserDetailComponentComponent implements OnInit{
 
-/*   datos: UserInterface[] = [];
+  public user: UserInterface | any;
 
-  constructor (private servicio: UserServiceService) {}
+  constructor (private servicio: UserServiceService, private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void{
-
-    this.servicio.getItems().subscribe((data) => {
-      console.log(data);
-      this.datos = data;
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(async (params: any) => {
+      let id: number = parseInt(params.userid)
+      let response: any = await this.servicio.getById(id);
+      this.user = response.results;
+      console.log(response)
+      console.log(this.user)
     });
-
-  } */
-
+  }
+  
 }
