@@ -9,6 +9,8 @@ import { UserListComponentComponent } from './components/user-list-component/use
 import { NewUserComponentComponent } from './components/new-user-component/new-user-component.component';
 import { UserDetailComponentComponent } from './components/user-detail-component/user-detail-component.component';
 import { UpdateUserComponentComponent } from './components/update-user-component/update-user-component.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { UpdateUserComponentComponent } from './components/update-user-component
     UserListComponentComponent,
     NewUserComponentComponent,
     UserDetailComponentComponent,
-    UpdateUserComponentComponent
+    UpdateUserComponentComponent,
+    UserCardComponent,
+    NotificacionesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

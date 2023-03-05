@@ -7,35 +7,27 @@ import { UserInterface } from '../interfaces/user-interface';
   providedIn: 'root'
 })
 export class UserServiceService {
-  linkApi: string = 'https://peticiones.online/api/users/';
+  private linkApi: string = 'https://peticiones.online/api/users/';
 
-  constructor(private httpClient: HttpClient) { 
-  }
-  
-  getItems(pPage: number = 1): Promise<any>{
+  constructor(private httpClient: HttpClient) { }
+
+  getItems(pPage: number = 1): Promise<any> {
     return lastValueFrom(this.httpClient.get<any>(`${this.linkApi}?page=${pPage}`));
   }
 
-  getById(pId: number): Promise<any>{
-    return lastValueFrom(this.httpClient.get<any>(`${this.linkApi}${pId}`));
+  getById(id: string): Promise<any> {
+    return lastValueFrom(this.httpClient.get<any>(`${this.linkApi}${id}`));
   }
 
-  
-  /* getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiURL);
+  create(pUser: UserInterface): Promise<any> {
+    return lastValueFrom(this.httpClient.post<any>(`${this.linkApi}`, pUser))
   }
 
-  createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.apiURL, user);
+  update(pUser: UserInterface): Promise<any>{
+    return lastValueFrom(this.httpClient.put<any>(`${this.linkApi}${pUser._id}`, pUser))
   }
 
-  updateUser(user: User): Observable<User> {
-    const url = `${this.apiURL}/${user.id}`;
-    return this.http.put<User>(url, user);
+  deleteObs(pId: number): Promise<any> {
+    return lastValueFrom(this.httpClient.delete<any>(`${this.linkApi}${pId}`)) 
   }
-
-  deleteUser(id: number): Observable<User> {
-    const url = `${this.apiURL}/${id}`;
-    return this.http.delete<User>(url);
-  } */
 }

@@ -5,9 +5,11 @@ import { UserDetailComponentComponent } from './components/user-detail-component
 import { UserListComponentComponent } from './components/user-list-component/user-list-component.component';
 
 const routes: Routes = [
-  { path: '', component: UserListComponentComponent},
-  { path: 'newUser', component: NewUserComponentComponent},
-  { path: 'users/:userid', component: UserDetailComponentComponent}
+  { path: '', pathMatch:'full', redirectTo: 'home' },
+  { path: 'home', component: UserListComponentComponent },
+  { path: 'newUser', component: NewUserComponentComponent },
+  { path: 'users/:id', component: UserDetailComponentComponent }, 
+  { path: 'updateuser/:id', component: NewUserComponentComponent }
 ];
 
 @NgModule({
