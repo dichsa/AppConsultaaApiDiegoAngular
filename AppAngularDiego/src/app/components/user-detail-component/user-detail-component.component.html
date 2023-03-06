@@ -11,7 +11,7 @@
         <li><span style="font-weight: bold;">Email:</span> {{ user?.email }}</li>
       </ul>
       <button class="btn btn-outline-dark" (click)="deleteUser(user?._id)">Eliminar</button>
-      <button class="btn btn-outline-dark">Actualizar</button>
+      <button class="btn btn-outline-dark" [routerLink]="['/updateuser/', user?._id]">Actualizar</button>
       <button class="btn btn-outline-dark" [routerLink]="['/home']">Volver a listado</button>
     </div>
   </div>

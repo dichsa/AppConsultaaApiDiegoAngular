@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { lastValueFrom, Observable } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { UserInterface } from '../interfaces/user-interface';
 
 @Injectable({
@@ -27,7 +27,11 @@ export class UserServiceService {
     return lastValueFrom(this.httpClient.put<any>(`${this.linkApi}${pUser._id}`, pUser))
   }
 
-  deleteObs(pId: number): Promise<any> {
-    return lastValueFrom(this.httpClient.delete<any>(`${this.linkApi}${pId}`)) 
+  delete(id: number): Promise<any> {
+    return lastValueFrom(this.httpClient.delete<any>(`${this.linkApi}${id}`)) 
+  }
+
+  getAll(pPage: number = 1): Promise<any> {
+    return lastValueFrom(this.httpClient.get<any>(`${this.linkApi}?page=${pPage}`))
   }
 }

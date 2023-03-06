@@ -16,8 +16,8 @@ async deleteUser(pId: number | undefined): Promise<void> {
   //consultar al servicio para hacer el borrado.
   if (pId !== undefined) {
     try {
-      let response = await this.servicio.deleteObs(pId);
-      if (!response) {
+      let response = await this.servicio.delete(pId);
+      if (response) {
         alert('Usuario borrado correctamente')
       }
     } catch (error) {
